@@ -85,7 +85,7 @@ class Servico extends BuilderAbstract
         return $this->codigoTributacao;
     }
 
-    public function setCodigoBbs($codigoNbs)
+    public function setCodigoNbs($codigoNbs)
     {
         $this->codigoNbs = $codigoNbs;
     }
