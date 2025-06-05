@@ -227,8 +227,14 @@ class Nfse extends BuilderAbstract implements IDfe
         return $this->informacoesComplementares;
     }
 
-    public function setParcelas(Parcelas $parcelas)
+    public function setParcelas(array $parcelas)
     {
+        foreach ($parcelas as $parcela) {
+            if (!$parcela instanceof Parcelas) {
+                throw new InvalidArgumentException("Todos os itens devem ser instâncias de Parcelas");
+            }
+        }
+
         $this->parcelas = $parcelas;
     }
 
@@ -288,11 +294,11 @@ class Nfse extends BuilderAbstract implements IDfe
 
   public function send($configuration = null)
     {
-        $this->validate();
+ /*        $this->validate();
 
         if ($configuration) {
             $this->setConfiguration($configuration);
-        }
+        } */
 
         $communication = $this->getCallApiInstance($this->configuration);
         return $communication->send('POST', '/nfse', [$this->toArray(true)]);

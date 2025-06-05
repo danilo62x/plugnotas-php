@@ -76,12 +76,20 @@ class Tomador extends BuilderAbstract
 
     public function setEmail($email)
     {
-        if (!v::email()->validate($email)) {
-            throw new ValidationError(
-                'Endereço de email inválido.'
-            );
+        if (is_string($email) && strpos($email, ';') !== false) {
+            $emails = array_map('trim', explode(';', $email));
+            foreach ($emails as $e) {
+                if (!\Respect\Validation\Validator::email()->validate($e)) {
+                    throw new \TecnoSpeed\Plugnotas\Error\ValidationError("Email inválido: $e");
+                }
+            }
+            $this->email = implode(';', $emails);
+        } else {
+            if (!\Respect\Validation\Validator::email()->validate($email)) {
+                throw new \TecnoSpeed\Plugnotas\Error\ValidationError('Endereço de email inválido.');
+            }
+            $this->email = $email;
         }
-        $this->email = $email;
     }
 
     public function getEmail()
