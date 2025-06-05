@@ -26,6 +26,7 @@ class Servico extends BuilderAbstract
     private $codigo;
     private $codigoCidadeIncidencia;
     private $codigoTributacao;
+    private $codigoNbs;
     private $deducao;
     private $descricaoCidadeIncidencia;
     private $discriminacao;
@@ -82,6 +83,16 @@ class Servico extends BuilderAbstract
     public function getCodigoTributacao()
     {
         return $this->codigoTributacao;
+    }
+
+    public function setCodigoBbs($codigoNbs)
+    {
+        $this->codigoNbs = $codigoNbs;
+    }
+
+    public function getCodigoNbs()
+    {
+        return $this->codigoNbs;
     }
 
     public function setDeducao(Deducao $deducao)
