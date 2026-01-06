@@ -255,11 +255,6 @@ class Nfse extends BuilderAbstract implements IDfe
 
     public function setVersao($versao)
     {
-        if (!v::in(['1.01'])->validate($versao)) {
-            throw new ValidationError(
-                'Versão inválida. Valores aceitos: 1.01'
-            );
-        }
         $this->versao = $versao;
     }
 
@@ -310,7 +305,7 @@ class Nfse extends BuilderAbstract implements IDfe
 
   public function send($configuration = null)
     {
- /*        $this->validate();
+ /* $this->validate();
 
         if ($configuration) {
             $this->setConfiguration($configuration);
