@@ -16,7 +16,7 @@ use TecnoSpeed\Plugnotas\Nfse\Servico\Obra;
 use TecnoSpeed\Plugnotas\Nfse\Servico\Retencao;
 use TecnoSpeed\Plugnotas\Nfse\Servico\Valor;
 use TecnoSpeed\Plugnotas\Nfse\Servico\Ibpt;
-use TecnoSpeed\Plugnotas\Nfse\Servico\Ibscbs;
+use TecnoSpeed\Plugnotas\Nfse\Servico\IbsCbs;
 use TecnoSpeed\Plugnotas\Traits\Communication;
 
 class Servico extends BuilderAbstract
@@ -268,12 +268,12 @@ class Servico extends BuilderAbstract
         return $this->ibpt;
     }
 
-    public function setIbscbs(Ibscbs $ibscbs)
+    public function setIbsCbs(IbsCbs $ibscbs)
     {
         $this->ibscbs = $ibscbs;
     }
 
-    public function getIbscbs()
+    public function getIbsCbs()
     {
         return $this->ibscbs;
     }
@@ -332,9 +332,8 @@ class Servico extends BuilderAbstract
         if (array_key_exists('ibpt', $data)) {
             $data['ibpt'] = Ibpt::fromArray($data['ibpt']);
         }
-
         if (array_key_exists('ibscbs', $data)) {
-            $data['ibscbs'] = Ibscbs::fromArray($data['ibscbs']);
+            $data['ibscbs'] = IbsCbs::fromArray($data['ibscbs']);
         }
 
         return Hydrate::toObject(Servico::class, $data);
