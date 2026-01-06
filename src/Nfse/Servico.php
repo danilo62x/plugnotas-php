@@ -16,6 +16,7 @@ use TecnoSpeed\Plugnotas\Nfse\Servico\Obra;
 use TecnoSpeed\Plugnotas\Nfse\Servico\Retencao;
 use TecnoSpeed\Plugnotas\Nfse\Servico\Valor;
 use TecnoSpeed\Plugnotas\Nfse\Servico\Ibpt;
+use TecnoSpeed\Plugnotas\Nfse\Servico\Ibscbs;
 use TecnoSpeed\Plugnotas\Traits\Communication;
 
 class Servico extends BuilderAbstract
@@ -43,6 +44,7 @@ class Servico extends BuilderAbstract
     private $tributavel;
     private $responsavelRetencao;
     private $ibpt;
+    private $ibscbs;
 
 
     public function setCnae($cnae)
@@ -266,6 +268,16 @@ class Servico extends BuilderAbstract
         return $this->ibpt;
     }
 
+    public function setIbscbs(Ibscbs $ibscbs)
+    {
+        $this->ibscbs = $ibscbs;
+    }
+
+    public function getIbscbs()
+    {
+        return $this->ibscbs;
+    }
+
     public function validate()
     {
         $data = $this->toArray();
@@ -319,6 +331,10 @@ class Servico extends BuilderAbstract
         }
         if (array_key_exists('ibpt', $data)) {
             $data['ibpt'] = Ibpt::fromArray($data['ibpt']);
+        }
+
+        if (array_key_exists('ibscbs', $data)) {
+            $data['ibscbs'] = Ibscbs::fromArray($data['ibscbs']);
         }
 
         return Hydrate::toObject(Servico::class, $data);

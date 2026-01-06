@@ -45,6 +45,7 @@ class Nfse extends BuilderAbstract implements IDfe
     private $parcelas;
     private $informacoesComplementares;
     private $ativo;
+    private $versao;
 
 
     public function setCidadePrestacao(CidadePrestacao $cidadePrestacao)
@@ -250,6 +251,21 @@ class Nfse extends BuilderAbstract implements IDfe
     public function getAtivo()
     {
         return $this->ativo;
+    }
+
+    public function setVersao($versao)
+    {
+        if (!v::in(['1.01'])->validate($versao)) {
+            throw new ValidationError(
+                'Versão inválida. Valores aceitos: 1.01'
+            );
+        }
+        $this->versao = $versao;
+    }
+
+    public function getVersao()
+    {
+        return $this->versao;
     }
 
     public function validate()
