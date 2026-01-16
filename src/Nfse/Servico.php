@@ -268,12 +268,12 @@ class Servico extends BuilderAbstract
         return $this->ibpt;
     }
 
-    public function setIbsCbs(IbsCbs $ibscbs)
+    public function setIbscbs(IbsCbs $ibscbs)
     {
         $this->ibscbs = $ibscbs;
     }
 
-    public function getIbsCbs()
+    public function getIbscbs()
     {
         return $this->ibscbs;
     }

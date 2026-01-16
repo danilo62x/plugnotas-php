@@ -29,6 +29,8 @@ class Tomador extends BuilderAbstract
     private $razaoSocial;
     private $telefone;
     private $orgaoPublico;
+    private $codigoEstrangeiro;
+
 
     public function setCpfCnpj($cpfCnpj)
     {
@@ -160,6 +162,16 @@ class Tomador extends BuilderAbstract
     {
         return $this->orgaoPublico;
     }
+    public function setCodigoEstrangeiro($codigoEstrangeiro)
+    {
+        $this->codigoEstrangeiro = $codigoEstrangeiro;
+    }
+    public function getCodigoEstrangeiro()
+    {
+        return $this->codigoEstrangeiro;
+    }
+
+
     public function setRazaoSocial($razaoSocial)
     {
         if (is_null($razaoSocial)) {
